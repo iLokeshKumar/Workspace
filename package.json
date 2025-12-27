@@ -10,6 +10,7 @@
     "build": "npx prisma generate && tsc",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
+    "postinstall": "npx prisma generate",
     "test": "jest"
   },
   "devDependencies": {
