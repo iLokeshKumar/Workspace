@@ -4,9 +4,9 @@ import { authMiddleware } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-router.use(authMiddleware);
+router.use(authMiddleware as any);
 
-router.post('/', submitJob);
-router.get('/:jobId', getJobStatus);
+router.post('/', submitJob as any);
+router.get('/:jobId', getJobStatus as any);
 
 export default router;

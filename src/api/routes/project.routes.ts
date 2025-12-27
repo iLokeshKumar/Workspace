@@ -4,10 +4,10 @@ import { authMiddleware } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-router.use(authMiddleware);
+router.use(authMiddleware as any);
 
-router.post('/', createProject);
-router.get('/', getProjects);
-router.post('/:projectId/invite', inviteCollaborator);
+router.post('/', createProject as any);
+router.get('/', getProjects as any);
+router.post('/:projectId/invite', inviteCollaborator as any);
 
 export default router;

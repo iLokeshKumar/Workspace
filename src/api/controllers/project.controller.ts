@@ -35,7 +35,7 @@ export const getProjects = async (req: AuthRequest, res: Response) => {
 
         const allProjects = [
             ...ownedProjects,
-            ...collabProjects.map((c) => c.project),
+            ...collabProjects.map((c: any) => c.project),
         ];
 
         res.json(allProjects);

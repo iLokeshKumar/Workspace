@@ -4,9 +4,9 @@ import { authMiddleware } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-router.use(authMiddleware);
+router.use(authMiddleware as any);
 
-router.post('/', createWorkspace);
-router.get('/:projectId', getProjectWorkspaces);
+router.post('/', createWorkspace as any);
+router.get('/:projectId', getProjectWorkspaces as any);
 
 export default router;
