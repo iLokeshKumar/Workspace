@@ -4,10 +4,17 @@ import { setupWebSocket } from './websocket/collaboration.gateway';
 import { setupWorker } from './jobs/worker';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import prisma from './config/prisma';
 
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
+
+// Test PostgreSQL Connection
+prisma.$connect()
+    .then(() => console.log('Connected to PostgreSQL (Neon.tech) successfully'))
+    .catch((err) => console.error('Failed to connect to PostgreSQL:', err));
+
 const server = http.createServer(app);
 
 // Initialize WebSocket (Optional for dev if Redis is missing)
@@ -31,7 +38,8 @@ mongoose.connect(MONGODB_URI, {
 })
     .then(() => console.log('Connected to MongoDB successfully'))
     .catch((err) => {
-        console.warn('MongoDB not found. Activity logging will be disabled.');
+        console.error('MongoDB connection error:', err.message);
+        console.warn('Activity logging will be disabled.');
     });
 
 server.listen(PORT, () => {

@@ -16,6 +16,15 @@ dotenv.config();
 
 const app = express();
 
+// Root Route
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Real-Time Collaborative Workspace API is running!',
+        health: '/health',
+        docs: '/api-docs'
+    });
+});
+
 // Middlewares
 app.use(helmet());
 app.use(cors());
